@@ -7,13 +7,23 @@ import Day1
 
 main :: IO ()
 main = do
-  contents <- readFile "problems/day-01.txt"
-  let problem_lines = lines contents
-  let values = map (read :: String -> Integer) problem_lines
+  problemLines <- readProblemLines "day-01.txt"
 
-  let answer = problem01 values
+  let day1Input = ints problemLines
+  let answer = problem01 day1Input
+  printProblem "day01.1" $ show . problem01 $ day1Input
+  printProblem "day01.2" $ show . problem01Part2 $ day1Input
 
-  putStrLn ("day01.1 = " ++ show answer)
-  let answer2 = problem01Part2 values
-  putStrLn ("day01.2 = " ++ show answer2)
+readProblemLines :: String -> IO [String]
+readProblemLines file = do
+  contents <- readFile ("problems/" ++ file)
+  return $ lines contents
 
+
+printProblem :: String -> String -> IO ()
+printProblem problem result = do
+  putStrLn (problem ++ " = " ++ result)
+
+
+ints :: [String] -> [Integer]
+ints = map (read :: String -> Integer)

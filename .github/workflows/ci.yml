@@ -4,7 +4,7 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [master]
+    branches: [ master ]
 
 jobs:
   stack:
@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        stack: ["2.5.1"]
-        ghc: ["8.8.4"]
+        stack: [ "2.5.1" ]
+        ghc: [ "8.8.4" ]
 
     steps:
       - uses: actions/checkout@v2
