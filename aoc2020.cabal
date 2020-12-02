@@ -4,13 +4,13 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 94978d33270849bd56bec4f0bcaaa7d7d4852af8b6488b62c43e6332efc265d1
+-- hash: 2462f812d9265f3c253a0b6f48c92c323973aeae8de855a0d0f2b91451da6249
 
 name:           aoc2020
 version:        0.1.0.0
 description:    Please see the README on GitHub at <https://github.com/jakeswenson/aoc2020#readme>
-homepage:       https://github.com/jakeswenson/aoc2020#readme
-bug-reports:    https://github.com/jakeswenson/aoc2020/issues
+homepage:       https://github.com/jakeswenson/advent2020#readme
+bug-reports:    https://github.com/jakeswenson/advent2020/issues
 author:         Jake Swenson
 maintainer:     jakeswenson@outlook.com
 copyright:      2020 Jake Swenson
@@ -23,12 +23,12 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/jakeswenson/aoc2020
+  location: https://github.com/jakeswenson/advent2020
 
 library
   exposed-modules:
-      Day1
       AdventOfCode
+      Day1
   other-modules:
       Paths_aoc2020
   hs-source-dirs:
