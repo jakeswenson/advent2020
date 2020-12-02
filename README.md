@@ -1,0 +1,3 @@
+# 2020 Advent of Code
+
+In haskell, to finally learn it.... hopefully....
