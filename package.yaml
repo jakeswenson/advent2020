@@ -21,8 +21,9 @@ description: Please see the README on GitHub at <https://github.com/jakeswenson/
 
 dependencies:
   - base >= 4.7 && < 5
-  - text
+  - either
   - megaparsec
+  - text
 
 library:
   source-dirs: src

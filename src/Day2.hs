@@ -1,4 +1,6 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# language OverloadedStrings #-}
+{-# language RecordWildCards #-}
+
 module Day2 (
   problem2,
   problem2Part2,
@@ -8,75 +10,56 @@ module Day2 (
 ) where
 
 import Control.Monad
-import Data.Either
-import Data.Text(splitOn, Text)
+import Data.Maybe (mapMaybe)
+import Data.Monoid (Sum(..))
+import Data.Either.Combinators (rightToMaybe)
+import qualified Data.Text as T
+import Data.Text (splitOn, count, Text)
 import Text.Megaparsec
-import Text.Megaparsec.Char
+import Text.Megaparsec.Char (char, lowerChar, space1)
+import Text.Megaparsec.Char.Lexer (decimal)
 import Data.Void
 import Data.Char(isAlpha)
-import qualified Text.Megaparsec.Char.Lexer as L
 
-type Parser = Parsec Void [Char]
+type Parser = Parsec Void Text
 
-data PasswordAndPolicy = PasswordAndPolicy {
-   min, max :: Integer
-  , required :: String
-  , password :: String
+data PasswordAndPolicy = PasswordAndPolicy
+  { min, max :: Int
+  , required :: Char
+  , password :: Text
   } deriving (Show, Eq)
 
 -- Parse a line like
 --   3-14 w: wwwwwwhwwwwwwpwwwwwf
 parseLine :: Parser PasswordAndPolicy
 parseLine = do
-  minLen <- integer
-  char '-'
-  maxLen <- integer
-  space
-  required <- lowerChar
-  char ':'
-  space
-  password <- takeWhile1P (Just "password") isAlpha
-  return $ PasswordAndPolicy {
-    Day2.min = minLen,
-    Day2.max = maxLen,
-    required = required:[],
-    password = password }
-  where
-    lexeme  = L.lexeme space
-    integer = lexeme L.decimal
+    min <- decimal
+    char '-'
+    max <- decimal
+    space1
+    required <- lowerChar
+    char ':'
+    space1
+    password <- takeWhile1P (Just "password") isAlpha
+    return $ PasswordAndPolicy { .. }
 
-
-parseProblem :: String -> PasswordAndPolicy
-parseProblem line =
-  fromRight (error $ "Failed to Parse line: " ++ line) $ runParser parseLine "input" line
+parseProblem :: String -> Maybe PasswordAndPolicy
+parseProblem = rightToMaybe . runParser parseLine "input" . T.pack
 
 isValidPassword :: PasswordAndPolicy -> Bool
-isValidPassword PasswordAndPolicy{Day2.min=min, Day2.max=max, required=required, password=password} =
-  let occurrences = toInteger . length $ filter (((==) . head) required) password in
-    min <= occurrences && max >= occurrences
+isValidPassword PasswordAndPolicy { .. } =
+  let occurrences = T.count (T.singleton required) password
+  in occurrences >= min && occurrences <= max
 
-
-countValid :: (PasswordAndPolicy -> Bool) -> [PasswordAndPolicy] -> Integer
-countValid _ [] = 0
-countValid validator all@(password:passwords) =
-  toInteger . length $ filter validator all
-
-problem2 :: [String] -> Integer
-problem2 lines =
-  countValid isValidPassword passwords
-  where
-    passwords = map parseProblem lines
+problem2 :: [String] -> Int
+problem2 = length . filter isValidPassword . mapMaybe parseProblem
 
 isValidPassword2 :: PasswordAndPolicy -> Bool
-isValidPassword2 PasswordAndPolicy{Day2.min=first, Day2.max=second, required=required, password=password} =
-  char == firstChar && char /= secondChar || char == secondChar && char /= firstChar
+isValidPassword2 PasswordAndPolicy { .. } =
+  required == firstChar && required /= secondChar || required == secondChar && required /= firstChar
   where
-    char = head required
-    firstChar = password !! ((fromInteger first) - 1)
-    secondChar = password !! ((fromInteger second) - 1)
+    firstChar = T.index password $ min - 1
+    secondChar = T.index password $ max - 1
 
-problem2Part2 :: [String] -> Integer
-problem2Part2 lines =
-  countValid isValidPassword2 passwords
-  where
-    passwords = map parseProblem lines
+problem2Part2 :: [String] -> Int
+problem2Part2 = length . filter isValidPassword . mapMaybe parseProblem

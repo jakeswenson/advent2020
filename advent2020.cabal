@@ -1,10 +1,10 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.33.0.
+-- This file has been generated from package.yaml by hpack version 0.34.2.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 29598d374e8187b17656b29c94c4cfc368a4415b125b633fe1242efb22631906
+-- hash: 9f54a8911890be491ae7bd2f940b208929f4079d5bb0fd430f24a957d312dbd5
 
 name:           advent2020
 version:        0.1.0.0
@@ -36,6 +36,7 @@ library
       src
   build-depends:
       base >=4.7 && <5
+    , either
     , megaparsec
     , text
   default-language: Haskell2010
@@ -50,6 +51,7 @@ executable aoc2020-exe
   build-depends:
       advent2020
     , base >=4.7 && <5
+    , either
     , megaparsec
     , text
   default-language: Haskell2010
@@ -65,6 +67,7 @@ test-suite aoc2020-test
   build-depends:
       advent2020
     , base >=4.7 && <5
+    , either
     , hspec
     , megaparsec
     , tasty
