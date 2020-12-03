@@ -4,15 +4,20 @@ import System.IO
 import Debug.Trace
 
 import Day1
+import Day2
 
 main :: IO ()
 main = do
-  problemLines <- readProblemLines "day-01.txt"
+  problem1Lines <- readProblemLines "day-01.txt"
 
-  let day1Input = ints problemLines
-  let answer = problem01 day1Input
-  printProblem "day01.1" $ show . problem01 $ day1Input
-  printProblem "day01.2" $ show . problem01Part2 $ day1Input
+  let day1Input = ints problem1Lines
+  printProblem "day01.1" $ problem01 day1Input
+  printProblem "day01.2" $ problem01Part2 day1Input
+
+  problem2Lines <- readProblemLines "day-02.txt"
+  printProblem "day02.1" $ problem2 problem2Lines
+  printProblem "day02.2" $ problem2Part2 problem2Lines
+
 
 readProblemLines :: String -> IO [String]
 readProblemLines file = do
@@ -20,9 +25,11 @@ readProblemLines file = do
   return $ lines contents
 
 
-printProblem :: String -> String -> IO ()
+printProblem :: Show s => String -> s -> IO ()
 printProblem problem result = do
-  putStrLn (problem ++ " = " ++ result)
+  putStrLn $ problem ++ " = " ++ answer
+  where
+    answer = show result
 
 
 ints :: [String] -> [Integer]

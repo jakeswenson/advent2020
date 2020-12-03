@@ -4,11 +4,11 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 2462f812d9265f3c253a0b6f48c92c323973aeae8de855a0d0f2b91451da6249
+-- hash: 29598d374e8187b17656b29c94c4cfc368a4415b125b633fe1242efb22631906
 
-name:           aoc2020
+name:           advent2020
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/jakeswenson/aoc2020#readme>
+description:    Please see the README on GitHub at <https://github.com/jakeswenson/advent2020#readme>
 homepage:       https://github.com/jakeswenson/advent2020#readme
 bug-reports:    https://github.com/jakeswenson/advent2020/issues
 author:         Jake Swenson
@@ -29,38 +29,45 @@ library
   exposed-modules:
       AdventOfCode
       Day1
+      Day2
   other-modules:
-      Paths_aoc2020
+      Paths_advent2020
   hs-source-dirs:
       src
   build-depends:
       base >=4.7 && <5
+    , megaparsec
+    , text
   default-language: Haskell2010
 
 executable aoc2020-exe
   main-is: Main.hs
   other-modules:
-      Paths_aoc2020
+      Paths_advent2020
   hs-source-dirs:
       app
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N -XOverloadedStrings
   build-depends:
-      aoc2020
+      advent2020
     , base >=4.7 && <5
+    , megaparsec
+    , text
   default-language: Haskell2010
 
 test-suite aoc2020-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
-      Paths_aoc2020
+      Paths_advent2020
   hs-source-dirs:
       test
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N -XOverloadedStrings
   build-depends:
-      aoc2020
+      advent2020
     , base >=4.7 && <5
     , hspec
+    , megaparsec
     , tasty
     , tasty-hunit
+    , text
   default-language: Haskell2010
