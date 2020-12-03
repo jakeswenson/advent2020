@@ -62,4 +62,4 @@ isValidPassword2 PasswordAndPolicy { .. } =
     secondChar = T.index password $ max - 1
 
 problem2Part2 :: [String] -> Int
-problem2Part2 = length . filter isValidPassword . mapMaybe parseProblem
+problem2Part2 = length . filter isValidPassword2 . mapMaybe parseProblem
