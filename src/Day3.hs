@@ -9,39 +9,41 @@ isTree = (==) '#'
 parseMapRow :: String -> [Bool]
 parseMapRow = map isTree
 
-countTrees :: Int -> [[Bool]] -> Int
-countTrees step treeMap =
-  countTreesCols step 0 treeMap
+retainEvery :: Int -> [a] -> [a]
+retainEvery count =
+  retain 0 -- start off keeping the first element
   where
-    countTreesCols :: Int -> Int -> [[Bool]] -> Int
-    countTreesCols _ _ [] = 0
-    countTreesCols slope col (row:rows) =
-      (+) tree $ countTreesCols slope (col + slope) rows
-      where
-        tree =
-          if row !! (mod col (length row))
-          then 1
-          else 0
+    every = count - 1
+    retain _ [] = []
+    retain 0 (x:xs) = x : retain every xs
+    retain i (x:xs) = retain (i-1) xs
+
+walk :: (Int, Int) -> [[a]] -> [a]
+walk (dx, dy) treeMap =
+  drop 1 $ walkX 0 retainedMap
+  where
+    retainedMap = retainEvery dy treeMap
+    walkX :: Int -> [[a]] -> [a]
+    walkX _ [] = []
+    walkX xPos (row:rows) =
+      (head $ drop xPos $ cycle row) : (walkX (xPos + dx) rows)
+
+countTrees :: (Int, Int) -> [[Bool]] -> Int
+countTrees slope =
+  length . filter id . walk slope
 
 problem3 :: [String] -> Int
-problem3 = countTrees 3 . map parseMapRow
+problem3 = countTrees (3, 1) . map parseMapRow
 
 problem3Part2 :: [String] -> Int
 problem3Part2 rows =
-  twoRows * (product $ map (\ f -> f treeMap) $ map countTrees paths)
+  product $ map (\ f -> f treeMap) $ map countTrees slopes
   where
     treeMap = map parseMapRow rows
-    paths = [
-        1,
-        3,
-        5,
-        7
+    slopes = [
+        (1, 1),
+        (3, 1),
+        (5, 1),
+        (7, 1),
+        (1, 2)
       ]
-
-    twoRows = countTrees 1 $ skipRows treeMap
-
-    skipRows :: [a] -> [a]
-    skipRows [] = []
-    skipRows (row:[]) = []
-    skipRows (row : _: []) = [row]
-    skipRows (row:_:rows) = row:(skipRows rows)

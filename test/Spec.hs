@@ -3,7 +3,7 @@ import Test.Tasty
 
 import Day1(problem01, problem01Part2)
 import Day2(problem2, parseProblem, PasswordAndPolicy(..), isValidPassword, problem2Part2)
-import Day3(problem3)
+import Day3(problem3, problem3Part2)
 import qualified Data.Text as T
 import Data.Maybe
 
@@ -72,5 +72,7 @@ exampleDay3 = [
 
 day03 = testGroup "Problem 03" [
   testCase "Example" $ do
-    problem3 exampleDay3 @?= 7
+    problem3 exampleDay3 @?= 7,
+  testCase "Part 2" $ do
+    problem3Part2 exampleDay3 @?= 336
   ]
