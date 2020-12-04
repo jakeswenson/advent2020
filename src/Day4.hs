@@ -58,8 +58,7 @@ validField ("byr", year) = parseInt year `elem` [1920..2002]
 validField ("iyr", year) = parseInt year `elem` [2010..2020]
 validField ("eyr", year) = parseInt year `elem` [2020..2030]
 validField ("hcl", color) =
-  if T.head color /= '#'
-  then False
+  if T.head color /= '#' then False
   else T.all (\ c -> c `elem` "abcdef1234567890") (T.tail color)
 validField ("hgt", height) =
   if T.takeEnd 2 height == T.pack "in"

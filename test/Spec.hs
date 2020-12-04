@@ -117,5 +117,5 @@ day04 = testGroup "Problem 04" [
   testCase "Example" $ do
     Day4.part1 exampleDay4 @?= 2,
   testCase "Part 2" $ do
-    Day3.part2 exampleDay3 @?= 336
+    Day4.part2 exampleDay4 @?= 2
   ]
