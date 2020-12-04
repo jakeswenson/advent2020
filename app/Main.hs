@@ -6,6 +6,7 @@ import Debug.Trace
 import Day1
 import Day2
 import Day3
+import Day4
 
 main :: IO ()
 main = do
@@ -20,8 +21,12 @@ main = do
   printProblem "day02.2" $ Day2.part2 problem2Lines
 
   problem3Map <- readProblemLines "day-03.txt"
-  printProblem "day03.1" $ Day2.part1 problem3Map
-  printProblem "day03.2" $ Day2.part2 problem3Map
+  printProblem "day03.1" $ Day3.part1 problem3Map
+  printProblem "day03.2" $ Day3.part2 problem3Map
+
+  problem4 <- readFile ("problems/day-04.txt")
+  printProblem "day04.1" $ Day4.part1 problem4
+  printProblem "day04.2" $ Day4.part2 problem4
 
 
 readProblemLines :: String -> IO [String]
