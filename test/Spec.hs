@@ -1,9 +1,9 @@
 import Test.Tasty.HUnit
 import Test.Tasty
 
-import Day1(problem01, problem01Part2)
-import Day2(problem2, parseProblem, PasswordAndPolicy(..), isValidPassword, problem2Part2)
-import Day3(problem3, problem3Part2)
+import Day1
+import Day2
+import Day3
 import qualified Data.Text as T
 import Data.Maybe
 
@@ -25,11 +25,11 @@ exampleDay01 = [1721,
 
 day01 = testGroup "Problem 01" [
     testCase "Empty List" $ do
-      problem01 [] @?= 0,
+      Day1.part1 [] @?= 0,
     testCase "Example" $ do
-      problem01 exampleDay01 @?= 514579,
+      Day1.part1 exampleDay01 @?= 514579,
     testCase "Part 2" $ do
-      problem01Part2 exampleDay01 @?= 241861950
+      Day1.part2 exampleDay01 @?= 241861950
     ]
 
 exampleDay02 = [
@@ -49,11 +49,11 @@ day02 = testGroup "Problem 02" [
         (isValidPassword . fromJust) password @?= True
   ],
   testCase "Empty List" $ do
-    problem2 [] @?= 0,
+    Day2.part1 [] @?= 0,
   testCase "Example" $ do
-    problem2 exampleDay02 @?= 2,
+    Day2.part1 exampleDay02 @?= 2,
   testCase "Part 2" $ do
-    problem2Part2 exampleDay02 @?= 1
+    Day2.part2 exampleDay02 @?= 1
   ]
 
 exampleDay3 = [
@@ -72,7 +72,7 @@ exampleDay3 = [
 
 day03 = testGroup "Problem 03" [
   testCase "Example" $ do
-    problem3 exampleDay3 @?= 7,
+    Day3.part1 exampleDay3 @?= 7,
   testCase "Part 2" $ do
-    problem3Part2 exampleDay3 @?= 336
+    Day3.part2 exampleDay3 @?= 336
   ]

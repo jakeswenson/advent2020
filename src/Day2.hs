@@ -2,8 +2,8 @@
 {-# language RecordWildCards #-}
 
 module Day2 (
-  problem2,
-  problem2Part2,
+  part1,
+  part2,
   isValidPassword,
   parseProblem,
   PasswordAndPolicy(..)
@@ -51,8 +51,8 @@ isValidPassword PasswordAndPolicy { .. } =
   let occurrences = T.count (T.singleton required) password
   in occurrences >= min && occurrences <= max
 
-problem2 :: [String] -> Int
-problem2 = length . filter isValidPassword . mapMaybe parseProblem
+part1 :: [String] -> Int
+part1 = length . filter isValidPassword . mapMaybe parseProblem
 
 isValidPassword2 :: PasswordAndPolicy -> Bool
 isValidPassword2 PasswordAndPolicy { .. } =
@@ -61,5 +61,5 @@ isValidPassword2 PasswordAndPolicy { .. } =
     firstChar = T.index password $ min - 1
     secondChar = T.index password $ max - 1
 
-problem2Part2 :: [String] -> Int
-problem2Part2 = length . filter isValidPassword2 . mapMaybe parseProblem
+part2 :: [String] -> Int
+part2 = length . filter isValidPassword2 . mapMaybe parseProblem

@@ -1,6 +1,6 @@
 module Day3 (
-  problem3,
-  problem3Part2,
+  part1,
+  part2,
 ) where
 
 isTree :: Char -> Bool
@@ -32,11 +32,11 @@ countTrees :: (Int, Int) -> [[Bool]] -> Int
 countTrees slope =
   length . filter id . walk slope
 
-problem3 :: [String] -> Int
-problem3 = countTrees (3, 1) . map parseMapRow
+part1 :: [String] -> Int
+part1 = countTrees (3, 1) . map parseMapRow
 
-problem3Part2 :: [String] -> Int
-problem3Part2 rows =
+part2 :: [String] -> Int
+part2 rows =
   product $ map (\ f -> f treeMap) $ map countTrees slopes
   where
     treeMap = map parseMapRow rows
