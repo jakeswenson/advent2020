@@ -5,6 +5,7 @@ import Day1
 import Day2
 import Day3
 import Day4
+import Day5
 import qualified Data.Text as T
 import Data.Maybe
 import Text.Megaparsec
@@ -14,7 +15,7 @@ main :: IO ()
 main = defaultMain tests
 
 tests :: TestTree
-tests = testGroup "All Tests" [day01, day02, day03, day04]
+tests = testGroup "All Tests" [day01, day02, day03, day04, day05]
 
 exampleDay01 = [1721,
                 979,
@@ -118,4 +119,27 @@ day04 = testGroup "Problem 04" [
     Day4.part1 exampleDay4 @?= 2,
   testCase "Part 2" $ do
     Day4.part2 exampleDay4 @?= 2
+  ]
+
+examplesDay5 = [
+    ("BFFFBBFRRR", 70, 7, 567),
+    ("FFFBBBFRRR", 14, 7, 119),
+    ("BBFFBBFRLL", 102, 4, 820)
+  ]
+
+ticket (t, _, _, _) = t
+
+day05 = testGroup "Problem 05" [
+  testGroup "Parser" [
+    testCase "Example" $ do
+      Day5.parseRow "FBFBBFFRLR" @?= 44,
+    testCase "Row" $ do
+      Day5.parseRow "BFFFBBFRRR" @?= 70,
+    testCase "Chair" $ do
+      Day5.parseChair "BFFFBBFRRR" @?= 7
+  ],
+  testCase "Example" $ do
+    Day5.part1 (map ticket examplesDay5) @?= 820,
+  testCase "Part 2" $ do
+    Day5.part2 (map ticket examplesDay5) @?= 2
   ]

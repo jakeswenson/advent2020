@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 263a8a8cb0f75f5039714dc60015887edbb3a437b3484c8531b66f4e842917e7
+-- hash: b398dcaa86c0b308a571902455b8d7bd4e768c2fab2b16e9239480575733e3dd
 
 name:           advent2020
 version:        0.1.0.0
@@ -32,12 +32,14 @@ library
       Day2
       Day3
       Day4
+      Day5
   other-modules:
       Paths_advent2020
   hs-source-dirs:
       src
   build-depends:
       base >=4.7 && <5
+    , containers
     , either
     , megaparsec
     , text
@@ -53,6 +55,7 @@ executable aoc2020-exe
   build-depends:
       advent2020
     , base >=4.7 && <5
+    , containers
     , either
     , megaparsec
     , text
@@ -69,6 +72,7 @@ test-suite aoc2020-test
   build-depends:
       advent2020
     , base >=4.7 && <5
+    , containers
     , either
     , hspec
     , megaparsec

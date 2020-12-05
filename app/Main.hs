@@ -7,6 +7,7 @@ import Day1
 import Day2
 import Day3
 import Day4
+import Day5
 
 main :: IO ()
 main = do
@@ -24,23 +25,24 @@ main = do
   printProblem "day03.1" $ Day3.part1 problem3Map
   printProblem "day03.2" $ Day3.part2 problem3Map
 
-  problem4 <- readFile ("problems/day-04.txt")
+  problem4 <- readFile "problems/day-04.txt"
   printProblem "day04.1" $ Day4.part1 problem4
   printProblem "day04.2" $ Day4.part2 problem4
 
+  problem5 <- readProblemLines "day-05.txt"
+  printProblem "day05.1" $ Day5.part1 problem5
+  printProblem "day05.2" $ Day5.part2 problem5
 
 readProblemLines :: String -> IO [String]
 readProblemLines file = do
   contents <- readFile ("problems/" ++ file)
   return $ lines contents
 
-
 printProblem :: Show s => String -> s -> IO ()
 printProblem problem result = do
   putStrLn $ problem ++ " = " ++ answer
   where
     answer = show result
-
 
 ints :: [String] -> [Integer]
 ints = map (read :: String -> Integer)

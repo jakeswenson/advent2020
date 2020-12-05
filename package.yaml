@@ -24,6 +24,7 @@ dependencies:
   - either
   - megaparsec
   - text
+  - containers
 
 library:
   source-dirs: src
