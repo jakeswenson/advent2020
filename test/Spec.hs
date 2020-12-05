@@ -141,5 +141,8 @@ day05 = testGroup "Problem 05" [
   testCase "Example" $ do
     Day5.part1 (map ticket examplesDay5) @?= 820,
   testCase "Part 2" $ do
-    Day5.part2 (map ticket examplesDay5) @?= 2
+    Day5.part2 [
+        "BBFFBBFRLL",
+        "BBFFBBFRRL"
+      ] @?= 821
   ]
