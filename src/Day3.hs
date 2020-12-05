@@ -26,7 +26,7 @@ walk (dx, dy) treeMap =
     walkX :: Int -> [[a]] -> [a]
     walkX _ [] = []
     walkX xPos (row:rows) =
-      (head $ drop xPos $ cycle row) : (walkX (xPos + dx) rows)
+      (cycle row !! max 0 xPos) : walkX (xPos + dx) rows
 
 countTrees :: (Int, Int) -> [[Bool]] -> Int
 countTrees slope =
@@ -37,7 +37,7 @@ part1 = countTrees (3, 1) . map parseMapRow
 
 part2 :: [String] -> Int
 part2 rows =
-  product $ map (\ f -> f treeMap) $ map countTrees slopes
+  product $ map ((\ f -> f treeMap) . countTrees) slopes
   where
     treeMap = map parseMapRow rows
     slopes = [
