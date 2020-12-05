@@ -1,9 +1,12 @@
+{-# language OverloadedStrings #-}
+
 module Days.Day04(tests) where
 import Test.Tasty
 import Test.Tasty.HUnit
 
 import Text.Megaparsec
 import Data.Either.Combinators (rightToMaybe)
+import Data.Maybe
 
 import Day4(part1, part2, parseField, parsePassport, parseAllPassports)
 

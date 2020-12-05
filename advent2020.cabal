@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 564ffde207b29831c78b4181b43020c02b6c169161c83f7725e7c14622e5ef51
+-- hash: 732407beaa7131bace837dbbc47278430665cf5a774c30565186a4f02dcb465f
 
 name:           advent2020
 version:        0.1.0.0
@@ -51,7 +51,7 @@ executable aoc2020-exe
       Paths_advent2020
   hs-source-dirs:
       app
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N -XOverloadedStrings
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       advent2020
     , base >=4.7 && <5
@@ -73,7 +73,7 @@ test-suite aoc2020-test
       Paths_advent2020
   hs-source-dirs:
       test
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N -XOverloadedStrings
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       advent2020
     , base >=4.7 && <5

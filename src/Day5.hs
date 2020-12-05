@@ -10,9 +10,11 @@ import Data.Set(Set, fromList, member)
 
 partition :: (Integer, Integer) -> Char -> (Integer, Integer)
 partition (low, high) c
-  | c `elem` ['F', 'L'] = (low, low + (high-low) `div` 2)
-  | c `elem` ['B', 'R'] = (low + (high-low) `div` 2 + 1, high)
-  | otherwise = error ("Unexpected character in ticket" ++ show c)
+  | c `elem` ['F', 'L'] = (low, low + mid)
+  | c `elem` ['B', 'R'] = (low + mid + 1, high)
+  | otherwise = error ("Unexpected character in ticket " ++ show c)
+  where
+    mid = (high - low) `div` 2
 
 parseRow :: String -> Integer
 parseRow = uncurry min . foldl partition (0, 127) . take 7
