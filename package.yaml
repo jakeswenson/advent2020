@@ -25,6 +25,8 @@ dependencies:
   - megaparsec
   - text
   - containers
+  - graph-wrapper
+  - algebraic-graphs
 
 library:
   source-dirs: src

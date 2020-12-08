@@ -19,9 +19,6 @@ part1 = sum . map countUniqueAnswers . parseInput
     parseInput :: String -> [String]
     parseInput = map (filter isAlpha) . splitGroups
 
--- Your seat wasn't at the very front or back, though;
--- the seats with IDs +1 and -1 from yours will be in your list.
--- What is the ID of your seat?
 part2 :: String -> Int
 part2 =
   sum . map size . intersect . answers
