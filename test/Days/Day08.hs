@@ -18,7 +18,7 @@ example = unlines [
 
 tests = testGroup "Problem 08" [
   testCase "Example" $ do
-    part1 example @?= 11,
+    part1 example @?= 5,
   testCase "Part 2" $ do
     part2 example @?= 6
   ]

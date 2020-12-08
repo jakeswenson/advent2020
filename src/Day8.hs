@@ -20,7 +20,7 @@ import Data.Void
 import Data.Char(isAlpha)
 
 data Instruction =
-  | Accumulator Int
+  Accumulator Int
   | Jump Int
   | NoOp
 
