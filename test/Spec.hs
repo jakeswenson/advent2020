@@ -10,6 +10,7 @@ import Days.Day06
 import Days.Day07
 import Days.Day08
 import Days.Day09
+import Days.Day10
 
 main :: IO ()
 main = defaultMain allTests
@@ -25,4 +26,5 @@ allTests = testGroup "All Tests" [
     , Days.Day07.tests
     , Days.Day08.tests
     , Days.Day09.tests
+    , Days.Day10.tests
   ]

@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 24eac9e388a7f0a75622b413048b6da987baa2e46975a9da7ec9b256ccb1a779
+-- hash: 801079939d9c28f85c03f5d9f3608afd25f0f4ab03084f28cf2bab7743acdf07
 
 name:           advent2020
 version:        0.1.0.0
@@ -29,6 +29,7 @@ library
   exposed-modules:
       AdventOfCode
       Day1
+      Day10
       Day2
       Day3
       Day4
@@ -49,6 +50,7 @@ library
     , graph-wrapper
     , megaparsec
     , text
+    , vector
   default-language: Haskell2010
 
 executable aoc2020-exe
@@ -67,6 +69,7 @@ executable aoc2020-exe
     , graph-wrapper
     , megaparsec
     , text
+    , vector
   default-language: Haskell2010
 
 test-suite aoc2020-test
@@ -82,6 +85,7 @@ test-suite aoc2020-test
       Days.Day07
       Days.Day08
       Days.Day09
+      Days.Day10
       Paths_advent2020
   hs-source-dirs:
       test
@@ -98,4 +102,5 @@ test-suite aoc2020-test
     , tasty
     , tasty-hunit
     , text
+    , vector
   default-language: Haskell2010

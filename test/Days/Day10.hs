@@ -1,11 +1,11 @@
 {-# language OverloadedStrings #-}
 
-module Days.Day09(tests) where
+module Days.Day10(tests) where
 
 import Test.Tasty
 import Test.Tasty.HUnit
 
-import Day9(part1, part2)
+import Day10(part1, part2)
 
 example = [
     35,
@@ -30,7 +30,7 @@ example = [
     576
   ]
 
-tests = testGroup "Problem 09" [
+tests = testGroup "Problem 10" [
   testCase "Example" $ do
     part1 example @?= 20,
   testCase "Part 2" $ do

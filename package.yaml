@@ -27,6 +27,7 @@ dependencies:
   - containers
   - graph-wrapper
   - algebraic-graphs
+  - vector
 
 library:
   source-dirs: src
