@@ -11,6 +11,7 @@ import Day5
 import Day6
 import Day7
 import Day8
+import Day9
 
 main :: IO ()
 main = do
@@ -47,6 +48,10 @@ main = do
   problem8 <- readFile "problems/day-08.txt"
   printProblem "day08.1" $ Day8.part1 problem8
   printProblem "day08.2" $ Day8.part2 problem8
+
+  problem9 <- ints <$> readProblemLines "problems/day-09.txt"
+  printProblem "day09.1" $ Day9.part1 problem9
+  printProblem "day09.2" $ Day9.part2 problem9
 
 readProblemLines :: String -> IO [String]
 readProblemLines file = do
